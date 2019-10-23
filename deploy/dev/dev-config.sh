@@ -1,0 +1,22 @@
+#!/bin/bash
+
+OPERATOR_NAMESPACE="${OPERATOR_NAMESPACE:-dev}"
+METRICS_EXPORTER_NAMESPACE="${OPERATOR_NAMESPACE}"
+
+#INSTALL_FROM_ALTINITY_RELEASE_DOCKERHUB="${INSTALL_FROM_ALTINITY_RELEASE_DOCKERHUB:-yes}"
+INSTALL_FROM_ALTINITY_RELEASE_DOCKERHUB="${INSTALL_FROM_ALTINITY_RELEASE_DOCKERHUB:-no}"
+
+#INSTALL_FROM_DEPLOYMENT_MANIFEST="${INSTALL_FROM_DEPLOYMENT_MANIFEST:-yes}"
+INSTALL_FROM_DEPLOYMENT_MANIFEST="${INSTALL_FROM_DEPLOYMENT_MANIFEST:-no}"
+
+# In case both INSTALL_* options are "no" we are going to run operator manually, not from dockerhub
+
+if [[ "${INSTALL_FROM_ALTINITY_RELEASE_DOCKERHUB}" == "yes" ]]; then
+    OPERATOR_IMAGE="altinity/clickhouse-operator:latest"
+    METRICS_EXPORTER_IMAGE="altinity/metrics-exporter:latest"
+fi
+
+if [[ "${INSTALL_FROM_DEPLOYMENT_MANIFEST}" == "yes" ]]; then
+    OPERATOR_IMAGE="sunsingerus/clickhouse-operator:dev"
+    METRICS_EXPORTER_IMAGE="sunsingerus/metrics-exporter:dev"
+fi
