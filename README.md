@@ -1,5 +1,6 @@
 # ClickHouse Operator
 
+Creates, configures, manages : : ClickHouse clusters running on Kubernetes 
 The ClickHouse Operator creates, configures and manages ClickHouse clusters running on Kubernetes.
 
 [![issues](https://img.shields.io/github/issues/altinity/clickhouse-operator.svg)](https://github.com/altinity/clickhouse-operator/issues)
